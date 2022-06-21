@@ -8,7 +8,7 @@ const App = ()=>{
     const onSubmit = async(event) =>{
         event.preventDefault();
 
-        await axios.post('http://localhost/4000/posts', {
+        await axios.post('http://localhost:4000/posts', {
             title
         });
 
@@ -19,7 +19,7 @@ const App = ()=>{
         <form onSubmit={onSubmit}>
             <div className="form-group">
             <label>title</label>
-            <input value = {title} onChnage={e=> setTitle(e.target.value)}
+            <input value = {title} onChange={e=> setTitle(e.target.value)}
              className="form-control"></input>
             </div>
             <button className="btn btn-primary">Submit</button>
