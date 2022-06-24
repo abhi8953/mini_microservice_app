@@ -5,6 +5,7 @@ const cors = require('cors');
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
+const axios = require('axios');
 
 
 const posts = {};
@@ -21,7 +22,20 @@ app.post('/posts', (req, res)=>{
         id,title
     };
 
+    axios.post('http://localhost:4005/events',{
+        type: "Post created",
+        data:{
+            id,title
+        }
+    });
+
     res.status(201).send(posts[id]);
+});
+
+app.post('/events',(req,res)=>{
+    console.log('Recieved Event', req.body.type);
+
+    res.send({});
 });
 
 app.listen(4000, ()=>{
